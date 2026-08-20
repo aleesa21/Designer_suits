@@ -1,8 +1,11 @@
 import React from 'react'
+import HeroSection from '../component/HeroSection'
 
 function Home() {
   return (
-    <div className='bg-background h-screen'>Home</div>
+   <main>
+    <HeroSection />
+   </main>
   )
 }
 

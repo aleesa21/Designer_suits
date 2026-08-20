@@ -1,7 +1,12 @@
+@import url("https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400..900;1,400..900&family=Hanken+Grotesk:wght@300;400;600&display=swap");
 @import "tailwindcss";
 
 @theme {
- /* background colors */
+  /* typography */
+  --font-display: "Bodoni Moda", serif;
+  --font-body: "Hanken Grotesk", sans-serif;
+
+  /* background colors */
   --color-background: #131313;
   --color-surface: #131313;
   --color-surface-dim: #131313;
@@ -16,7 +21,6 @@
 
   /* Warm dark tone */
   --color-warm-charcoal: #1a1817;
-
 
   /* 
      PRIMARY — LUXURY GOLD / YELLOW
@@ -51,8 +55,7 @@
   --color-on-primary-fixed: #211b0b;
   --color-on-primary-fixed-variant: #5c4814;
 
-
-/* text */
+  /* text */
 
   /* Main heading/body text */
   --color-on-surface: #e5e2e1;
@@ -64,9 +67,6 @@
   --color-inverse-on-surface: #313030;
   --color-inverse-surface: #e5e2e1;
 
-
-
-
   --color-secondary: #cdc5c1;
   --color-secondary-container: #4b4643;
   --color-secondary-fixed: #eae1dd;
@@ -76,7 +76,6 @@
   --color-on-secondary-container: #bbb3b0;
   --color-on-secondary-fixed: #1f1b19;
   --color-on-secondary-fixed-variant: #4b4643;
-
 
   /* ================================
      TERTIARY
@@ -92,8 +91,7 @@
   --color-on-tertiary-fixed: #1a1c19;
   --color-on-tertiary-fixed-variant: #454744;
 
-
-/* borders */
+  /* borders */
 
   /* Main border */
   --color-outline: #756f60;
@@ -110,15 +108,12 @@
   /* Stronger gold border */
   --color-border-gold-strong: rgba(214, 182, 94, 0.65);
 
-
- 
-
   --color-muted-gold: #a39382;
 
-
-/* erors */
+  /* erors */
   --color-error: #ffb4ab;
   --color-error-container: #93000a;
   --color-on-error: #690005;
   --color-on-error-container: #ffdad6;
 }
+
