@@ -67,64 +67,121 @@ function HeroSection() {
         }}
       />
 
-   {/* SECTION 1: HERO */}
-     <section
-  id="home"
-  className="hero-section relative w-full min-h-screen flex items-center justify-center overflow-hidden"
->
-  <div className="absolute inset-0 z-0">
-    <video
-      ref={heroVideoRef}
-      autoPlay
-      loop
-      muted
-      playsInline
-      className="h-full w-full object-cover opacity-40 scale-105"
-    >
-      <source src="/abc.mp4" type="video/mp4" />
-    </video>
-    <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/50 to-neutral-950/80" />
-  </div>
+      {/* SECTION 1: HERO */}
+      {/* //emerald */}
+      {/* <section
+        id="home"
+        className="hero-section relative w-full min-h-screen flex items-center justify-center overflow-hidden"
+      >
+        <div className="absolute inset-0 z-0">
+          <video
+            ref={heroVideoRef}
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="h-full w-full object-cover opacity-40 scale-105"
+          >
+            <source src="/abc.mp4" type="video/mp4" />
+          </video>
+          <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/50 to-neutral-950/80" />
+        </div>
 
-  <div
-    ref={heroTextRef}
-    className="relative z-10 max-w-[1440px] w-full mx-auto px-6 md:px-12 flex flex-col items-center text-center pt-28"
-  >
-    <span className="fade-hero text-[#C9A96A] mb-6 text-xs font-medium tracking-[0.4em] uppercase">
-      Est. 1989 &middot; Bespoke Tailoring
-    </span>
+        <div
+          ref={heroTextRef}
+          className="relative z-10 max-w-[1440px] w-full mx-auto px-6 md:px-12 flex flex-col items-center text-center pt-28"
+        >
+          <span className="fade-hero text-[#2F664F] mb-6 text-xs font-medium tracking-[0.4em] uppercase">
+            Est. 1989 &middot; Bespoke Tailoring
+          </span>
 
-    <h1 className="fade-hero font-serif text-neutral-100 mb-8 tracking-wide text-5xl sm:text-7xl lg:text-9xl font-extralight leading-[1.02] uppercase">
-      Crafted For <br />
-      <span className="text-[#C9A96A]/90 italic font-normal">
-        Distinction
-      </span>
-    </h1>
+          <h1 className="fade-hero font-serif text-[#EDE7DD] mb-8 tracking-wide text-5xl sm:text-7xl lg:text-9xl font-extralight leading-[1.02] uppercase">
+            Crafted For <br />
+            <span className="text-[#1F4D3A] italic font-normal">
+              Distinction
+            </span>
+          </h1>
 
-    <p className="fade-hero font-sans font-light text-base sm:text-lg leading-relaxed text-neutral-300 max-w-2xl mb-12">
-      Handcrafted Made-to-Measure Suitings. Architectural precision
-      designed around your natural movement—never a standard size chart.
-    </p>
+          <p className="fade-hero font-sans font-light text-base sm:text-lg leading-relaxed text-neutral-300 max-w-2xl mb-12">
+            Handcrafted Made-to-Measure Suitings. Architectural precision
+            designed around your natural movement—never a standard size chart.
+          </p>
 
-    <div className="fade-hero flex flex-col sm:flex-row gap-5 items-center justify-center w-full sm:w-auto">
-      <button className="w-full sm:w-auto bg-[#C9A96A] text-neutral-950 px-9 py-4 rounded-full text-xs font-semibold tracking-[0.2em] uppercase hover:bg-[#D4B67D] transition-all shadow-lg shadow-[#C9A96A]/20 hover:scale-[1.02] active:scale-[0.98]">
-        Book Consultation
-      </button>
-      <button className="w-full sm:w-auto border border-neutral-700 text-neutral-200 px-9 py-4 rounded-full text-xs font-semibold tracking-[0.2em] uppercase hover:border-[#C9A96A]/60 hover:text-[#C9A96A] transition-all backdrop-blur-sm">
-        Explore Collection
-      </button>
-    </div>
-  </div>
+          <div className="fade-hero flex flex-col sm:flex-row gap-5 items-center justify-center w-full sm:w-auto">
+            <button className="w-full sm:w-auto border border-[#2F664F]/70 text-[#EDE7DD] px-9 py-4 rounded-full text-xs font-medium tracking-[0.2em] uppercase hover:bg-[#1F4D3A] hover:border-[#1F4D3A] transition-all hover:scale-[1.02] active:scale-[0.98]">
+              Book Consultation
+            </button>
+            <button className="w-full sm:w-auto border border-neutral-700 text-neutral-200 px-9 py-4 rounded-full text-xs font-medium tracking-[0.2em] uppercase hover:border-[#2F664F] hover:text-[#2F664F] transition-all backdrop-blur-sm">
+              Explore Collection
+            </button>
+          </div>
+        </div>
 
-  <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-50 z-10 pointer-events-none">
-    <span className="text-[9px] tracking-[0.3em] uppercase text-neutral-400">
-      Scroll Story
-    </span>
-    <div className="w-[1px] h-6 bg-gradient-to-b from-[#C9A96A] to-transparent animate-pulse" />
-  </div>
-</section>
+        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-50 z-10 pointer-events-none">
+          <span className="text-[9px] tracking-[0.3em] uppercase text-neutral-400">
+            Scroll Story
+          </span>
+          <div className="w-[1px] h-6 bg-gradient-to-b from-[#2F664F] to-transparent animate-pulse" />
+        </div>
+      </section> */}
 
+      {/* //gold  */}
 
+      <section
+        id="home"
+        className="hero-section relative w-full min-h-screen flex items-center justify-center overflow-hidden"
+      >
+        <div className="absolute inset-0 z-0">
+          <video
+            ref={heroVideoRef}
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="h-full w-full object-cover opacity-40 scale-105"
+          >
+            <source src="/abc.mp4" type="video/mp4" />
+          </video>
+          <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/50 to-neutral-950/80" />
+        </div>
+
+        <div
+          ref={heroTextRef}
+          className="relative z-10 max-w-[1440px] w-full mx-auto px-6 md:px-12 flex flex-col items-center text-center pt-28"
+        >
+          <span className="fade-hero text-[#C9A664] mb-6 text-xs font-medium tracking-[0.4em] uppercase">
+            Est. 1989 &middot; Bespoke Tailoring
+          </span>
+
+          <h1 className="fade-hero font-serif text-[#EDE7DD] mb-8 tracking-wide text-5xl sm:text-7xl lg:text-9xl font-extralight leading-[1.02] uppercase">
+            Crafted For <br />
+            <span className="text-[#AE8A3E] italic font-normal">
+              Distinction
+            </span>
+          </h1>
+
+          <p className="fade-hero font-sans font-light text-base sm:text-lg leading-relaxed text-neutral-300 max-w-2xl mb-12">
+            Handcrafted Made-to-Measure Suitings. Architectural precision
+            designed around your natural movement—never a standard size chart.
+          </p>
+
+          <div className="fade-hero flex flex-col sm:flex-row gap-5 items-center justify-center w-full sm:w-auto">
+            <button className="w-full sm:w-auto border border-[#AE8A3E]/70 text-[#EDE7DD] px-9 py-4 rounded-full text-xs font-medium tracking-[0.2em] uppercase hover:bg-[#AE8A3E] hover:text-neutral-950 transition-all hover:scale-[1.02] active:scale-[0.98]">
+              Book Consultation
+            </button>
+            <button className="w-full sm:w-auto border border-neutral-700 text-neutral-200 px-9 py-4 rounded-full text-xs font-medium tracking-[0.2em] uppercase hover:border-[#AE8A3E]/60 hover:text-[#AE8A3E] transition-all backdrop-blur-sm">
+              Explore Collection
+            </button>
+          </div>
+        </div>
+
+        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-50 z-10 pointer-events-none">
+          <span className="text-[9px] tracking-[0.3em] uppercase text-neutral-400">
+            Scroll Story
+          </span>
+          <div className="w-[1px] h-6 bg-gradient-to-b from-[#AE8A3E] to-transparent animate-pulse" />
+        </div>
+      </section>
     </div>
 
     // <section>

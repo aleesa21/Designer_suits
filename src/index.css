@@ -2,118 +2,30 @@
 @import "tailwindcss";
 
 @theme {
-  /* typography */
-  --font-display: "Bodoni Moda", serif;
-  --font-body: "Hanken Grotesk", sans-serif;
+  /* Backgrounds */
+  --background: #0a0a0a;                       /* bg-neutral-950 */
+  --background-overlay-from: #0a0a0a;           /* Video overlay gradient start */
+  --background-overlay-via: rgba(10, 10, 10, 0.5); /* Video overlay gradient middle */
+  --background-overlay-to: rgba(10, 10, 10, 0.8);  /* Video overlay gradient end */
 
-  /* background colors */
-  --color-background: #131313;
-  --color-surface: #131313;
-  --color-surface-dim: #131313;
+  /* Primary Accent - Active (Gold Theme) */
+  --primary: #AE8A3E;                           /* Primary gold accent & button hover */
+  --primary-light: #C9A664;                     /* Gold badge & subheadings */
+  --primary-alpha: rgba(174, 138, 62, 0.7);    /* Gold border with opacity */
 
-  --color-surface-container-lowest: #0e0e0e;
-  --color-surface-container-low: #1c1b1b;
-  --color-surface-container: #201f1f;
-  --color-surface-container-high: #2a2a2a;
-  --color-surface-container-highest: #353534;
-  --color-surface-bright: #3a3939;
-  --color-surface-variant: #353534;
-
-  /* Warm dark tone */
-  --color-warm-charcoal: #1a1817;
-
-  /* 
-     PRIMARY — LUXURY GOLD / YELLOW
  */
 
-  /* Main accent */
-  --color-primary: #d6b65e;
+  /* Foregrounds / Text */
+  --foreground: #EDE7DD;                        /* Main headline & high-contrast text */
+  --foreground-muted: #d4d4d4;                  /* text-neutral-300 body text */
+  --foreground-subtle: #a3a3a3;                 /* text-neutral-400 caption text */
+  --foreground-inverted: #0a0a0a;               /* Text on top of gold buttons */
 
-  /* Hover / slightly brighter gold */
-  --color-primary-hover: #e2c875;
+  /* Borders */
+  --border: #404040;                            /* border-neutral-700 */
+  --border-primary: #AE8A3E;                    /* Gold border */
 
-  /* Soft light gold */
-  --color-primary-light: #f0dda0;
-
-  /* Bright highlight */
-  --color-primary-bright: #f6e7b5;
-
-  /* Dark gold */
-  --color-primary-dark: #8a6a1d;
-
-  /* Deep gold-green replacement container */
-  --color-primary-container: #b8963f;
-
-  /* Fixed colors */
-  --color-primary-fixed: #f0dda0;
-  --color-primary-fixed-dim: #d6b65e;
-
-  /* Text/icons placed ON the gold */
-  --color-on-primary: #211b0b;
-  --color-on-primary-container: #3b2f0f;
-
-  --color-on-primary-fixed: #211b0b;
-  --color-on-primary-fixed-variant: #5c4814;
-
-  /* text */
-
-  /* Main heading/body text */
-  --color-on-surface: #e5e2e1;
-
-  /* Muted paragraph text */
-  --color-on-surface-variant: #c5c1b5;
-
-  /* Inverse text */
-  --color-inverse-on-surface: #313030;
-  --color-inverse-surface: #e5e2e1;
-
-  --color-secondary: #cdc5c1;
-  --color-secondary-container: #4b4643;
-  --color-secondary-fixed: #eae1dd;
-  --color-secondary-fixed-dim: #cdc5c1;
-
-  --color-on-secondary: #342f2d;
-  --color-on-secondary-container: #bbb3b0;
-  --color-on-secondary-fixed: #1f1b19;
-  --color-on-secondary-fixed-variant: #4b4643;
-
-  /* ================================
-     TERTIARY
-  ================================= */
-
-  --color-tertiary: #d3d3cf;
-  --color-tertiary-container: #b7b8b3;
-  --color-tertiary-fixed: #e3e3de;
-  --color-tertiary-fixed-dim: #c6c7c2;
-
-  --color-on-tertiary: #2f312e;
-  --color-on-tertiary-container: #474945;
-  --color-on-tertiary-fixed: #1a1c19;
-  --color-on-tertiary-fixed-variant: #454744;
-
-  /* borders */
-
-  /* Main border */
-  --color-outline: #756f60;
-
-  /* Subtle border */
-  --color-outline-variant: #403b31;
-
-  /* Glass / transparent border */
-  --color-glass-border: rgba(255, 255, 255, 0.12);
-
-  /* Gold border for featured elements */
-  --color-border-gold: rgba(214, 182, 94, 0.35);
-
-  /* Stronger gold border */
-  --color-border-gold-strong: rgba(214, 182, 94, 0.65);
-
-  --color-muted-gold: #a39382;
-
-  /* erors */
-  --color-error: #ffb4ab;
-  --color-error-container: #93000a;
-  --color-on-error: #690005;
-  --color-on-error-container: #ffdad6;
+  /* Effects / Lighting */
+  --spotlight: rgba(217, 119, 6, 0.06);        /* Mouse spotlight overlay */
 }
 
