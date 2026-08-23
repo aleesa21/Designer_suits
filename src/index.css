@@ -1,31 +1,33 @@
-@import url("https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400..900;1,400..900&family=Hanken+Grotesk:wght@300;400;600&display=swap");
 @import "tailwindcss";
 
 @theme {
+  /* Fonts */
+  --font-serif: "Bodoni Moda", serif;
+  --font-sans: "Hanken Grotesk", sans-serif;
+
   /* Backgrounds */
-  --background: #0a0a0a;                       /* bg-neutral-950 */
-  --background-overlay-from: #0a0a0a;           /* Video overlay gradient start */
-  --background-overlay-via: rgba(10, 10, 10, 0.5); /* Video overlay gradient middle */
-  --background-overlay-to: rgba(10, 10, 10, 0.8);  /* Video overlay gradient end */
+  --color-background: #0a0a0a;
+  --color-surface: #121212;
+  --color-surface-inset: #18181b;
+  --color-background-overlay-from: #0a0a0a;
+  --color-background-overlay-via: rgba(10, 10, 10, 0.5);
+  --color-background-overlay-to: rgba(10, 10, 10, 0.8);
 
-  /* Primary Accent - Active (Gold Theme) */
-  --primary: #AE8A3E;                           /* Primary gold accent & button hover */
-  --primary-light: #C9A664;                     /* Gold badge & subheadings */
-  --primary-alpha: rgba(174, 138, 62, 0.7);    /* Gold border with opacity */
-
-
+  /* Primary Accent */
+  --color-primary: #AE8A3E;
+  --color-primary-light: #C9A664;
+  --color-primary-alpha: rgba(174, 138, 62, 0.7);
 
   /* Foregrounds / Text */
-  --foreground: #EDE7DD;                        /* Main headline & high-contrast text */
-  --foreground-muted: #d4d4d4;                  /* text-neutral-300 body text */
-  --foreground-subtle: #a3a3a3;                 /* text-neutral-400 caption text */
-  --foreground-inverted: #0a0a0a;               /* Text on top of gold buttons */
+  --color-foreground: #EDE7DD;
+  --color-foreground-muted: #d4d4d4;
+  --color-foreground-subtle: #a3a3a3;
+  --color-foreground-inverted: #0a0a0a;
 
   /* Borders */
-  --border: #404040;                            /* border-neutral-700 */
-  --border-primary: #AE8A3E;                    /* Gold border */
+  --color-border: #404040;
+  --color-border-primary: #AE8A3E;
 
   /* Effects / Lighting */
-  --spotlight: rgba(217, 119, 6, 0.06);        /* Mouse spotlight overlay */
+  --color-spotlight: rgba(217, 119, 6, 0.06);
 }
-
