@@ -42,7 +42,6 @@ function ProductsForm({ categories, closeForm }) {
 
       {/* Semi-transparent Glass Panel */}
       <div className="bg-gradient-to-br from-white/[0.07] via-white/[0.03] to-white/[0.01] backdrop-blur-md border border-white/10 rounded-xl p-8 space-y-8 shadow-xl">
-        {" "}
         <div className="border-b border-white/10 pb-4">
           <h1 className="font-serif text-3xl font-light">
             Create{" "}
@@ -107,7 +106,6 @@ function ProductsForm({ categories, closeForm }) {
                 />
               </div>
             </div>
-
             <div className="space-y-6">
               <div>
                 <label className="block text-[10px] uppercase tracking-[0.2em] font-medium text-white mb-2">
@@ -168,6 +166,22 @@ function ProductsForm({ categories, closeForm }) {
                 </label>
               </div>
             </div>
+            <div>
+              <label className="block text-[10px] uppercase tracking-[0.2em] font-medium text-primary-light mb-2">
+                Design Images
+              </label>
+              <input
+                type="file"
+                name="images"
+                accept="image/*"
+                multiple
+                // onChange={handleImageChange}
+                className="w-full bg-black/40 border border-white/10 rounded-md px-4 py-2.5 text-xs text-foreground file:mr-4 file:py-1.5 file:px-3 file:rounded file:border-0 file:text-[10px] file:uppercase file:tracking-[0.15em] file:font-semibold file:bg-primary file:text-foreground-inverted hover:file:bg-primary-light file:cursor-pointer cursor-pointer focus:outline-none focus:border-primary transition-colors"
+              />
+              <span className="text-[11px] text-foreground-subtle mt-1.5 block">
+                You can select multiple images at once.
+              </span>
+            </div>{" "}
           </div>
 
           <div className="pt-6 border-t border-white/10 flex items-center justify-end gap-3">
