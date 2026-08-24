@@ -13,11 +13,10 @@ function Sidebar() {
   const sections = [
     {
       label: "Catalog",
-      items: [
-        { name: "Products", path: "/admin", icon: Scissors, end: true },
+      items: [        { name: "Products", path: "/admin", icon: Scissors, end: true },
 
         { name: "Categories", path: "/admin/categories", icon: FolderOpen },
-        { name: "Past works", path: "/admin/past-works", icon: Image },
+        { name: "Pastworks", path: "/admin/past-works", icon: Image },
       ],
     },
     {
@@ -31,8 +30,9 @@ function Sidebar() {
   ];
 
   return (
-    <nav className="w-[260px] h-screen bg-surface border-r border-border p-6 flex flex-col gap-6 font-sans text-foreground">
-      <div className="pb-5 border-b border-border/60">
+    <nav className="w-[250px] h-screen bg-[#181818] border-r border-[#2d2d2d] p-6 flex flex-col gap-6 font-sans">
+      {/* Header */}
+      <div className="pb-4 border-b border-[#2d2d2d]">
         <h1 className="font-serif text-2xl tracking-wide text-primary font-semibold">
           Designer Suits
         </h1>
@@ -41,6 +41,7 @@ function Sidebar() {
         </p>
       </div>
 
+      {/* Nav Sections */}
       <div className="flex-1 flex flex-col gap-6 overflow-y-auto">
         {sections.map((section) => (
           <div key={section.label} className="flex flex-col gap-1.5">
@@ -58,8 +59,8 @@ function Sidebar() {
                   className={({ isActive }) =>
                     `group flex items-center gap-3 px-3.5 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 ${
                       isActive
-                        ? "bg-primary text-foreground-inverted font-semibold shadow-md shadow-primary/10"
-                        : "text-foreground-muted hover:text-foreground hover:bg-surface-inset"
+                        ? "bg-primary text-foreground-inverted font-semibold shadow-md"
+                        : "text-foreground-muted hover:text-foreground hover:bg-[#252526]"
                     }`
                   }
                 >
