@@ -14,19 +14,19 @@
   --color-background-overlay-to: rgba(10, 10, 10, 0.8);
 
   /* Primary Accent */
-  --color-primary: #AE8A3E;
-  --color-primary-light: #C9A664;
+  --color-primary: #ae8a3e;
+  --color-primary-light: #c9a664;
   --color-primary-alpha: rgba(174, 138, 62, 0.7);
 
   /* Foregrounds / Text */
-  --color-foreground: #EDE7DD;
+  --color-foreground: #ede7dd;
   --color-foreground-muted: #d4d4d4;
   --color-foreground-subtle: #a3a3a3;
   --color-foreground-inverted: #0a0a0a;
 
   /* Borders */
   --color-border: #404040;
-  --color-border-primary: #AE8A3E;
+  --color-border-primary: #ae8a3e;
 
   /* Effects / Lighting */
   --color-spotlight: rgba(217, 119, 6, 0.06);
