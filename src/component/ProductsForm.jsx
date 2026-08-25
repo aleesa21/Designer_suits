@@ -1,21 +1,34 @@
 import React, { useState } from "react";
 import { ArrowLeft, Trash2 } from "lucide-react";
 
-function ProductsForm({ categories, closeForm }) {
-  const initialFormData = {
-    category_id: categories?.[0]?.category_id
-      ? Number(categories[0].category_id)
-      : 1,
-    title: "",
-    description: "",
-    fabric_options: "",
-    is_featured: false,
-    is_visible: true,
-    display_order: 0,
-  };
+function ProductsForm({ categories, closeForm, editedData }) {
+  const initialFormData = () => {
+    if (editedData) {
+      return {
+        category_id: Number(editedData.category_id),
+        title: editedData.name ?? "",
+        description: editedData.description ?? "",
+        fabric_options: editedData.fabric_options ?? "",
+        is_featured: Boolean(editedData.is_featured),
+        is_visible: Boolean(editedData.is_visible),
+        display_order: editedData.display_order ?? 0,
+      };
+    }
 
+    return {
+      category_id: categories?.[0]?.category_id
+        ? Number(categories[0].category_id)
+        : 1,
+      title: "",
+      description: "",
+      fabric_options: "",
+      is_featured: false,
+      is_visible: true,
+      display_order: 0,
+    };
+  };
   const [formData, setFormData] = useState(initialFormData);
-  const [images, setImages] = useState([]);
+  // const [images, setImages] = useState([]);
 
   const handleOnchange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -30,54 +43,54 @@ function ProductsForm({ categories, closeForm }) {
     }));
   };
 
-  const handleImageChange = (e) => {
-    const files = Array.from(e.target.files);
-    if (!files.length) return;
+  // const handleImageChange = (e) => {
+  //   const files = Array.from(e.target.files);
+  //   if (!files.length) return;
 
-    setImages((prev) => {
-      const hasExistingPrimary = prev.some((img) => img.is_primary);
-      const newImages = files.map((file, index) => ({
-        file,
-        previewUrl: URL.createObjectURL(file),
-        is_primary: !hasExistingPrimary && index === 0,
-        display_order: prev.length + index,
-      }));
-      return [...prev, ...newImages];
-    });
+  //   setImages((prev) => {
+  //     const hasExistingPrimary = prev.some((img) => img.is_primary);
+  //     const newImages = files.map((file, index) => ({
+  //       file,
+  //       previewUrl: URL.createObjectURL(file),
+  //       is_primary: !hasExistingPrimary && index === 0,
+  //       display_order: prev.length + index,
+  //     }));
+  //     return [...prev, ...newImages];
+  //   });
 
-    // Reset input so re-selecting the same file triggers onChange
-    e.target.value = "";
-  };
+  //   // Reset input so re-selecting the same file triggers onChange
+  //   e.target.value = "";
+  // };
 
-  const setPrimaryImage = (selectedIndex) => {
-    setImages((prev) =>
-      prev.map((img, i) => ({
-        ...img,
-        is_primary: i === selectedIndex,
-      })),
-    );
-  };
+  // const setPrimaryImage = (selectedIndex) => {
+  //   setImages((prev) =>
+  //     prev.map((img, i) => ({
+  //       ...img,
+  //       is_primary: i === selectedIndex,
+  //     })),
+  //   );
+  // };
 
-  const handleOrderChange = (index, value) => {
-    setImages((prev) =>
-      prev.map((img, i) =>
-        i === index ? { ...img, display_order: Number(value) } : img,
-      ),
-    );
-  };
+  // const handleOrderChange = (index, value) => {
+  //   setImages((prev) =>
+  //     prev.map((img, i) =>
+  //       i === index ? { ...img, display_order: Number(value) } : img,
+  //     ),
+  //   );
+  // };
 
-  const handleRemoveImage = (index) => {
-    setImages((prev) => {
-      URL.revokeObjectURL(prev[index].previewUrl);
-      const filtered = prev.filter((_, i) => i !== index);
+  // const handleRemoveImage = (index) => {
+  //   setImages((prev) => {
+  //     URL.revokeObjectURL(prev[index].previewUrl);
+  //     const filtered = prev.filter((_, i) => i !== index);
 
-      // Reassign primary to the first item if the primary image was removed
-      if (prev[index].is_primary && filtered.length > 0) {
-        filtered[0].is_primary = true;
-      }
-      return filtered;
-    });
-  };
+  //     // Reassign primary to the first item if the primary image was removed
+  //     if (prev[index].is_primary && filtered.length > 0) {
+  //       filtered[0].is_primary = true;
+  //     }
+  //     return filtered;
+  //   });
+  // };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -90,18 +103,18 @@ function ProductsForm({ categories, closeForm }) {
         .filter((item) => item.length > 0),
     };
 
-    const imagesPayload = images.map((img) => ({
-      file: img.file,
-      is_primary: img.is_primary,
-      display_order: img.display_order,
-    }));
+    // const imagesPayload = images.map((img) => ({
+    //   file: img.file,
+    //   is_primary: img.is_primary,
+    //   display_order: img.display_order,
+    // }));
 
     console.log("Product Payload:", productPayload);
-    console.log("Images Payload:", imagesPayload);
+    // console.log("Images Payload:", imagesPayload);
 
     // Cleanup Object URLs upon success
-    images.forEach((img) => URL.revokeObjectURL(img.previewUrl));
-    setImages([]);
+    // images.forEach((img) => URL.revokeObjectURL(img.previewUrl));
+    // setImages([]);
     setFormData(initialFormData);
     if (closeForm) closeForm();
   };
@@ -118,14 +131,14 @@ function ProductsForm({ categories, closeForm }) {
           Back to Catalog
         </button>
         <span className="text-[10px] uppercase tracking-[0.25em] text-primary font-semibold">
-          New Creation
+          {editedData ? "Editing Entry" : "New Creation"}
         </span>
       </div>
 
       <div className="bg-gradient-to-br from-white/[0.07] via-white/[0.03] to-white/[0.01] backdrop-blur-md border border-white/10 rounded-xl p-8 space-y-8 shadow-xl">
         <div className="border-b border-white/10 pb-4">
           <h1 className="font-serif text-3xl font-light">
-            Create{" "}
+            {editedData ? "Edit" : "Create"}{" "}
             <span className="italic text-primary font-serif">
               Bespoke Design
             </span>
@@ -260,11 +273,11 @@ function ProductsForm({ categories, closeForm }) {
                 name="images"
                 accept="image/*"
                 multiple
-                onChange={handleImageChange}
+                // onChange={handleImageChange}
                 className="w-full bg-black/40 border border-white/10 rounded-md px-4 py-2.5 text-xs text-foreground file:mr-4 file:py-1.5 file:px-3 file:rounded file:border-0 file:text-[10px] file:uppercase file:tracking-[0.15em] file:font-semibold file:bg-primary file:text-foreground-inverted hover:file:bg-primary-light file:cursor-pointer cursor-pointer focus:outline-none focus:border-primary transition-colors"
               />
 
-              {images.length > 0 && (
+              {/* {images.length > 0 && (
                 <div className="space-y-3 mt-4">
                   <p className="text-[10px] uppercase tracking-[0.2em] font-medium text-foreground-subtle">
                     Image Gallery Settings & Ordering
@@ -331,7 +344,7 @@ function ProductsForm({ categories, closeForm }) {
                     ))}
                   </div>
                 </div>
-              )}
+              )} */}
             </div>
           </div>
 
@@ -347,7 +360,7 @@ function ProductsForm({ categories, closeForm }) {
               type="submit"
               className="px-6 py-2.5 bg-primary text-foreground-inverted text-[10px] uppercase tracking-[0.2em] font-semibold rounded shadow-md hover:bg-primary-light transition-all"
             >
-              Create Design
+              {editedData ? "Update Design" : "Create Design"}{" "}
             </button>
           </div>
         </form>

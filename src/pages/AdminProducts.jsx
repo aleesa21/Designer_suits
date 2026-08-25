@@ -33,6 +33,7 @@ const MOCK_PRODUCTS = [
 
 function AdminProducts() {
   const [isformOpen, setIsformOpen] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState(false);
 
   // const[products,setProducts]=useState([]);
   // async function FetchProducts() {
@@ -51,14 +52,24 @@ function AdminProducts() {
   //   Fetchproducrs();
   // }, []);
 
+  const handleOpenEdit = (product) => {
+    setSelectedProduct(product);
+    setIsformOpen(true);
+  };
   const handleDelete = () => {
     alert("delete this item");
+  };
+
+  const handleAddNew = () => {
+    setSelectedProduct(null);
+    setIsformOpen(true);
   };
 
   if (isformOpen) {
     return (
       <ProductsForm
         categories={MOCK_CATEGORIES}
+        editedData={selectedProduct}
         closeForm={() => setIsformOpen(false)}
       />
     );
@@ -76,9 +87,7 @@ function AdminProducts() {
           </h1>
         </div>
         <button
-          onClick={() => {
-            setIsformOpen(true);
-          }}
+          onClick={handleAddNew}
           className="inline-flex items-center gap-2 px-5 py-2.5 bg-primary text-foreground-inverted text-xs uppercase tracking-[0.2em] font-semibold rounded shadow-md hover:bg-primary-light transition-all"
         >
           <Plus size={15} /> Add New Design
