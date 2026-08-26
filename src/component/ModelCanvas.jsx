@@ -1,4 +1,3 @@
-// ModelCanvas.jsx
 import { Suspense, useRef, useEffect } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { useGLTF, Html, useProgress } from "@react-three/drei";
@@ -13,9 +12,9 @@ function Loader() {
   const { progress } = useProgress();
   return (
     <Html center>
-      <span className="text-[10px] font-mono tracking-widest text-white/40 uppercase">
+      <div className="font-mono text-[10px] tracking-[0.15em] uppercase text-white/45 whitespace-nowrap">
         Loading object... {Math.round(progress)}%
-      </span>
+      </div>
     </Html>
   );
 }
@@ -25,12 +24,12 @@ function Model({ url, triggerSelector }) {
   const { scene } = useGLTF(url);
   const { camera } = useThree();
 
-  // Initial model setup matching original height and centering calculations
   useEffect(() => {
     scene.scale.set(1, 1, 1);
     scene.position.set(0, -1.8, 0);
     scene.rotation.set(0, 0, 0);
 
+    // Auto-centering calculation from index.html
     const box = new THREE.Box3().setFromObject(scene);
     const center = new THREE.Vector3();
     box.getCenter(center);
@@ -39,31 +38,30 @@ function Model({ url, triggerSelector }) {
     scene.position.y -= center.y;
     scene.position.z -= center.z;
 
-    // Fixed Y position offset after auto-centering
+    // Fixed Y position matching index.html
     scene.position.y = -2.2;
   }, [scene]);
 
   useGSAP(() => {
-    gsap.set(groupRef.current.rotation, { y: -0.35, x: 0 });
-    gsap.set(groupRef.current.position, { y: 0, z: 0 });
+    gsap.set(groupRef.current.rotation, { x: 0, y: -0.35, z: 0 });
+    gsap.set(groupRef.current.position, { x: 0, y: 0, z: 0 });
 
-    const targetTrigger = triggerSelector || document.body;
-
-    // 1. Primary scroll-driven animation timeline across the hero zone
+    // 1. Primary scroll animation bound to document.body (matches index.html scroll rate)
     const tl = gsap.timeline({
       scrollTrigger: {
-        trigger: targetTrigger,
+        trigger: document.body,
         start: "top top",
-        end: "bottom bottom",
+        end: "+=3000",
         scrub: 1.2,
       },
     });
 
-    tl.to(groupRef.current.rotation, { y: Math.PI * 2, x: 1.25, ease: "none" }, 0)
+    tl.to(groupRef.current.rotation, { y: Math.PI * 2, x: 0.25, ease: "none" }, 0)
       .to(groupRef.current.position, { y: -0.5, z: 1.5, ease: "none" }, 0)
       .to(camera.position, { z: 5, ease: "none" }, 0.5);
 
-    // 2. Dynamic canvas fade out right as you reach the bottom (Marquee section)
+    // 2. Fade out container when passing the designated hero zone target
+    const targetTrigger = triggerSelector || "body";
     const fadeTrigger = ScrollTrigger.create({
       trigger: targetTrigger,
       start: "75% top",
@@ -83,7 +81,6 @@ function Model({ url, triggerSelector }) {
     };
   }, [camera, triggerSelector]);
 
-  // Subtle continuous idle rotation
   useFrame(() => {
     if (groupRef.current) {
       groupRef.current.rotation.y += 0.0015;
@@ -105,22 +102,23 @@ export default function ModelCanvas({ url, triggerSelector }) {
           fov: 45,
           near: 0.1,
           far: 1000,
-          position: [0, 0.8, 5.2],
+          position: [0, 0.5, 5],
         }}
         gl={{
           antialias: true,
           alpha: true,
           toneMapping: THREE.ACESFilmicToneMapping,
-          toneMappingExposure: 1,
+          toneMappingExposure: 1.0,
         }}
         dpr={[1, 2]}
       >
         <fogExp2 attach="fog" args={["#0c0c0c", 0.035]} />
 
-        <ambientLight intensity={1} />
-        <directionalLight position={[5, 5, 4]} intensity={2.5} />
+        {/* Ambient & Directional Lights matching index.html */}
+        <ambientLight intensity={1.0} color="#ffffff" />
+        <directionalLight position={[5, 5, 4]} intensity={2.5} color="#ffffff" />
         <directionalLight position={[-5, -2, -2]} intensity={1.2} color="#88bbff" />
-        <pointLight position={[-3, 3, -2]} intensity={1.5} distance={10} />
+        <pointLight position={[-3, 3, -2]} intensity={1.5} distance={10} color="#ffffff" />
 
         <Suspense fallback={<Loader />}>
           <Model url={url} triggerSelector={triggerSelector} />
