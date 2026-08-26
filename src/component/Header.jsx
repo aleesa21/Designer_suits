@@ -10,7 +10,7 @@ function Header() {
   ];
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-8 py-6 backdrop-blur-md bg-neutral-950/50 border-b border-white/5">
+    <header className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-8 py-4 backdrop-blur-md bg-neutral-950/50 border-b border-white/5">
       <div className="text-sm tracking-[0.35em] font-light uppercase text-neutral-200">
         ATELIER
       </div>

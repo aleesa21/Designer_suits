@@ -13,7 +13,7 @@ function Layout() {
         <Footer />
       </section>
     </SmoothScroll>
-  );
+  )
 }
 
 export default Layout;
