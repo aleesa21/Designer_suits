@@ -1,5 +1,28 @@
 @import "tailwindcss";
 
+.hero-title {
+  font-family: "Syne", sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.05em;
+  line-height: 0.8;
+  font-size: clamp(4rem, 22vw, 24rem);
+  text-transform: uppercase;
+}
+ 
+.glass-badge {
+  background: rgba(18, 18, 18, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: clamp(4rem, 20vw, 9rem);
+    line-height: 0.85;
+  }
+}
+
 @theme {
   /* Fonts */
   --font-serif: "Bodoni Moda", serif;
