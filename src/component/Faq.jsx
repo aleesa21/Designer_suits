@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import {
   HelpCircle,
   Pencil,
@@ -24,6 +24,8 @@ export default function Faq() {
   const [faqs, setFaqs] = useState([]);
   const [form, setForm] = useState(emptyForm);
 
+  const formRef = useRef(null);
+
   useEffect(() => {
     setLoading(true);
     //  fetch logic
@@ -45,6 +47,14 @@ export default function Faq() {
           display_order: 2,
           is_visible: true,
         },
+        {
+          faq_id: 4,
+          question: "what is ur name?",
+          answer:
+            "Yes, we craft fully bespoke and semi bespoke suits to your exact measurements.",
+          display_order: 4,
+          is_visible: true,
+        },
       ]);
       setLoading(false);
     }, 400);
@@ -56,6 +66,7 @@ export default function Faq() {
 
   const startEdit = (faq) => {
     setForm(faq);
+    formRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
   const cancelEdit = () => {
@@ -112,7 +123,10 @@ export default function Faq() {
     "bg-gradient-to-br from-white/[0.06] via-white/[0.025] to-transparent border border-white/10 rounded-2xl p-6 md:p-7 shadow-lg shadow-black/30 space-y-5";
 
   return (
-    <div className="w-full max-w-4xl mx-auto space-y-6 text-foreground font-sans">
+    <div
+      ref={formRef}
+      className="w-full max-w-4xl mx-auto space-y-6 text-foreground font-sans"
+    >
       {/* Top Bar */}
       <div className="border-b border-white/10 pb-4">
         <span className="text-[10px] uppercase tracking-[0.25em] text-primary font-semibold">
