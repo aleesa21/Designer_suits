@@ -23,7 +23,7 @@ function Header() {
             className={({ isActive }) =>
               `transition-colors pb-1 border-b ${
                 isActive
-                  ? "text-amber-300 border-amber-300"
+                  ? "text-primary border-primary"
                   : "border-transparent hover:text-amber-300"
               }`
             }
