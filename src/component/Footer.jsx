@@ -5,7 +5,7 @@ import { IoLocationOutline } from "react-icons/io5";
 function Footer() {
   return (
     <footer className="relative z-50 bg-background border-t border-border text-foreground font-sans">
-      <div className="w-full px-6 md:px-12 py-10 md:py-15 space-y-16">
+      <div className="w-full px-6 md:px-12 py-5 space-y-16">
         {/* FLEX LAYOUT CONTAINER */}
         <div className="flex justify-between items-center md:flex-row flex-col gap-10">
           {/* COLUMN 1: DESIGNER SUITS  */}
@@ -75,7 +75,7 @@ function Footer() {
             <span className="text-xs font-mono uppercase text-primary tracking-widest block">
               Opening Hours
             </span>
-            <div className="grid grid-cols-2 md:block gap-4 text-sm text-foreground-subtle text-center md:text-left">
+            <div className="grid grid-cols-2 md:block gap-4 text-sm  text-foreground-subtle text-center md:text-left">
               <div>
                 <p className="font-medium text-foreground">Sun – Fri</p>
                 <p>10:00 AM – 7:30 PM</p>
@@ -138,8 +138,14 @@ function Footer() {
         {/* BOTTOM SECTION */}
         <div className="pt-8 border-t border-border text-center text-xs font-mono text-foreground-subtle uppercase tracking-widest">
           <p>
-            © {new Date().getFullYear()} DESIGNER SUITS NEPAL. MADE BY NEXORA
-            TECHNOLOGY.
+            © {new Date().getFullYear()} DESIGNER SUITS NEPAL.
+            <a
+              href="https://nexoratechnology.com.np/"
+              className="underline text-foreground"
+            >
+              MADE BY NEXORA TECHNOLOGY
+            </a>
+            .
           </p>
         </div>
       </div>
