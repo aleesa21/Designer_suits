@@ -1,79 +1,55 @@
 import { createBrowserRouter } from "react-router";
 import { RouterProvider } from "react-router/dom";
+import { lazy, Suspense } from "react";
 import Layout from "./component/Layout";
-import Home from "./pages/Home";
-import Product from "./pages/Product";
-import About from "./pages/About";
-import Contact from "./pages/Contact";
-import ProductDetailPage from "./pages/ProductDetailPage";
-import AdminDashboard2 from "./pages/AdminDashboard2";
-import AdminLayout from "./component/AdminLayout";
-import AdminProducts from "./pages/AdminProducts";
-import Categories from "./pages/Categories";
-import Faq from "./component/Faq";
-import Popup from "./component/Popup";
-import Shopdetails from "./component/Shopdetails";
-import Pastworks from "./pages/Pastworks";
+import Home from "./pages/Home"; // static — needed on initial load
+
+const Product = lazy(() => import("./pages/Product"));
+const ProductDetailPage = lazy(() => import("./pages/ProductDetailPage"));
+const About = lazy(() => import("./pages/About"));
+const Contact = lazy(() => import("./pages/Contact"));
+const AdminDashboard2 = lazy(() => import("./pages/AdminDashboard2"));
+const AdminLayout = lazy(() => import("./component/AdminLayout"));
+const AdminProducts = lazy(() => import("./pages/AdminProducts"));
+const Categories = lazy(() => import("./pages/Categories"));
+const Faq = lazy(() => import("./component/Faq"));
+const Popup = lazy(() => import("./component/Popup"));
+const Shopdetails = lazy(() => import("./component/Shopdetails"));
+const Pastworks = lazy(() => import("./pages/Pastworks"));
+
+// Helper function to stop repeating <Suspense>
+const withSuspense = (Component) => (
+  <Suspense fallback={<div>Loading...</div>}>
+    <Component />
+  </Suspense>
+);
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Layout />,
     children: [
-      {
-        index: true,
-        element: <Home />,
-      },
-      {
-        path: "/products",
-        element: <Product />,
-      },
-      {
-        path: "/product/:id",
-        element: <ProductDetailPage />,
-      },
-      {
-        path: "/about",
-        element: <About />,
-      },
-      {
-        path: "/contact",
-        element: <Contact />,
-      },
+      { index: true, element: <Home /> },
+      { path: "/products", element: withSuspense(Product) },
+      { path: "/product/:id", element: withSuspense(ProductDetailPage) },
+      { path: "/about", element: withSuspense(About) },
+      { path: "/contact", element: withSuspense(Contact) },
     ],
   },
   {
     path: "/admin2",
-    element: <AdminDashboard2 />,
+    element: withSuspense(AdminDashboard2),
   },
   {
     path: "admin",
-    element: <AdminLayout />,
+    element: withSuspense(AdminLayout),
     children: [
-      {
-        index: true,
-        element: <AdminProducts />,
-      },
-      {
-        path: "categories",
-        element: <Categories />,
-      },
-      {
-        path: "past-works",
-        element: <Pastworks />,
-      },
-      {
-        path: "faq",
-        element: <Faq />,
-      },
-      {
-        path: "popup",
-        element: <Popup />,
-      },
-      {
-        path: "shop-details",
-        element: <Shopdetails />,
-      },
+      { index: true, element: withSuspense(AdminProducts) },
+      { path: "categories", element: withSuspense(Categories) },
+      { path: "past-works", element: withSuspense(Pastworks) },
+      { path: "faq", element: withSuspense(Faq) },
+      { path: "popup", element: withSuspense(Popup) },
+      { path: "shop-details", element: withSuspense(Shopdetails) },
     ],
   },
 ]);
@@ -81,5 +57,4 @@ const router = createBrowserRouter([
 function App() {
   return <RouterProvider router={router} />;
 }
-
 export default App;
