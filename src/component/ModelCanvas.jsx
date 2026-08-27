@@ -20,80 +20,64 @@ function Loader() {
 }
 
 function Model({ url, triggerSelector }) {
-  const groupRef = useRef();
+  const scrollGroupRef = useRef(); // Outer group: managed by GSAP
+  const idleGroupRef = useRef();   // Inner group: managed by useFrame
   const { scene } = useGLTF(url);
   const { camera } = useThree();
 
-  useEffect(() => {
-    scene.scale.set(1, 1, 1);
-    scene.position.set(0, -1.8, 0);
-    scene.rotation.set(0, 0, 0);
+ // 1. Reset initial setup values to 0
+useEffect(() => {
+  scene.scale.set(1, 1, 1);
+  scene.position.set(0, -1.8, 0);
+  scene.rotation.set(0, 0, 0); // Ensures base mesh starts facing front
 
-    // Auto-centering calculation from index.html
-    const box = new THREE.Box3().setFromObject(scene);
-    const center = new THREE.Vector3();
-    box.getCenter(center);
+  const box = new THREE.Box3().setFromObject(scene);
+  const center = new THREE.Vector3();
+  box.getCenter(center);
 
-    scene.position.x -= center.x;
-    scene.position.y -= center.y;
-    scene.position.z -= center.z;
+  scene.position.x -= center.x;
+  scene.position.y -= center.y;
+  scene.position.z -= center.z;
 
-    // Fixed Y position matching index.html
-    scene.position.y = -2.2;
-  }, [scene]);
+  scene.position.y = -2.2;
+}, [scene]);
 
-  useGSAP(() => {
-    gsap.set(groupRef.current.rotation, { x: 0, y: -0.35, z: 0 });
-    gsap.set(groupRef.current.position, { x: 0, y: 0, z: 0 });
+useGSAP(() => {
+  // 2. Set outer group rotation Y to 0 (Face Front)
+  gsap.set(scrollGroupRef.current.rotation, { x: 0, y: 0, z: 0 });
+  gsap.set(scrollGroupRef.current.position, { x: 0, y: 0, z: 0 });
 
-    // 1. Primary scroll animation bound to document.body (matches index.html scroll rate)
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: document.body,
-        start: "top top",
-        end: "+=3000",
-        scrub: 1.2,
-      },
-    });
+  const tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: document.body,
+      start: "top top",
+      end: "+=3000",
+      scrub: 1.2,
+    },
+  });
 
-    tl.to(groupRef.current.rotation, { y: Math.PI * 2, x: 0.25, ease: "none" }, 0)
-      .to(groupRef.current.position, { y: -0.5, z: 1.5, ease: "none" }, 0)
-      .to(camera.position, { z: 5, ease: "none" }, 0.5);
+  // Rotation starts smoothly from 0 as you scroll down
+  tl.to(scrollGroupRef.current.rotation, { y: Math.PI * 0.75, x: 0.15, ease: "none" }, 0)
+    .to(scrollGroupRef.current.position, { y: -0.5, z: 1.5, ease: "none" }, 0)
+    .to(camera.position, { z: 5, ease: "none" }, 0.5);
 
-    // 2. Fade out container when passing the designated hero zone target
-    const targetTrigger = triggerSelector || "body";
-    const fadeTrigger = ScrollTrigger.create({
-      trigger: targetTrigger,
-      start: "75% top",
-      end: "bottom top",
-      scrub: true,
-      onUpdate: (self) => {
-        const container = document.querySelector(".glb-canvas-container");
-        if (container) {
-          container.style.opacity = (1 - self.progress).toString();
-        }
-      },
-    });
-
-    return () => {
-      tl.scrollTrigger?.kill();
-      fadeTrigger.kill();
-    };
-  }, [camera, triggerSelector]);
-
+  // ... (fade trigger code)
+}, [camera, triggerSelector]);
+  // Continuously rotate ONLY the inner group
   useFrame(() => {
-    if (groupRef.current) {
-      groupRef.current.rotation.y += 0.0015;
+    if (idleGroupRef.current) {
+      idleGroupRef.current.rotation.y += 0.0015;
     }
   });
 
   return (
-    <group ref={groupRef}>
-      <primitive object={scene} />
+    <group ref={scrollGroupRef}>
+      <group ref={idleGroupRef}>
+        <primitive object={scene} />
+      </group>
     </group>
   );
 }
-
 export default function ModelCanvas({ url, triggerSelector }) {
   return (
     <div className="glb-canvas-container fixed inset-0 z-[1] pointer-events-none transition-opacity duration-300">

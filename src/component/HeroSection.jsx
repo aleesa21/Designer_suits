@@ -3,49 +3,32 @@ import ModelCanvas from "./ModelCanvas";
 
 function HeroSection() {
   return (
-    <div className="relative bg-[#0c0c0c] text-[#e5e5e5] font-sans overflow-hidden">
+    <div className="relative bg-background text-foreground font-sans overflow-hidden">
       {/* 3D Canvas fixed in background */}
       <ModelCanvas url="/model.glb" triggerSelector="#model-hero-zone" />
 
-      {/* Global Header matching index.html */}
-      <header className="fixed top-0 left-0 w-full  px-6 py-4 flex items-center justify-between mix-blend-difference text-xs uppercase tracking-widest font-mono border-b border-white/10">
-        <div className="flex items-center space-x-6">
-          <a href="#" className="font-bold tracking-tighter text-sm font-sans">
-            MONOLITH STUDIO
-          </a>
-          <span className="hidden md:inline text-neutral-500">4:20 AM EST • 5°C</span>
-          <span className="hidden lg:inline text-neutral-500">MONOLITHSTUDIO.COM</span>
-        </div>
-
-        <nav className="flex items-center space-x-6 md:space-x-8">
-          <a href="#artists" className="hover:opacity-60 transition-opacity">ARTISTS</a>
-          <a href="#blog" className="hover:opacity-60 transition-opacity">BLOG</a>
-          <a href="#studio" className="hover:opacity-60 transition-opacity hidden sm:inline">STUDIO</a>
-          <a href="#book" className="px-4 py-2 border border-white hover:bg-white hover:text-black transition-all flex items-center gap-1">
-            BOOK EXPERIENCE <span>↗</span>
-          </a>
-        </nav>
-      </header>
-
-      {/* HERO & ABOUT ZONE (Model Animation Container) */}
-      <div id="model-hero-zone" className="relative w-full z-10">
+      {/* HERO & ABOUT ZONE Container - Raised z-index */}
+      <div id="model-hero-zone" className="relative w-full ">
 
         {/* HERO SECTION */}
-        <section className="min-h-screen relative flex flex-col justify-between p-6 pt-24 pointer-events-none">
-          <div className="w-full text-center mt-12">
-            <h1 className="hero-title text-white select-none opacity-90 font-display font-extrabold text-[clamp(4rem,22vw,24rem)] uppercase leading-[0.8] tracking-tighter">
-              MONOLITH
+        <section className="min-h-screen relative flex flex-col justify-between pt-24 pointer-events-none">
+          <div className="absolute left-0 right-0 flex items-center justify-center pointer-events-none">
+            <h1 className="hero-title text-foreground select-none opacity-90 text-center">
+              Designer suits
             </h1>
           </div>
 
-          <div className="flex justify-between items-end pb-8">
-            <div className="bg-[#121212]/75 backdrop-blur-md border border-white/10 p-4 max-w-xs text-xs space-y-1 pointer-events-auto">
-              <p className="font-bold">MONOLITH STUDIO</p>
-              <p className="text-neutral-400">CONTEMPORARY TATTOO STUDIO</p>
-              <p className="text-neutral-400">BASED IN BROOKLYN, NYC</p>
+          <div className="w-full" />
+
+          {/* BOTTOM HERO BAR */}
+          <div className="flex justify-between items-end pb-8 relative z-20">
+            <div className="glass-badge p-4 max-w-xs text-xs space-y-1 pointer-events-auto rounded-sm">
+              <p className="font-bold text-foreground">DESIGNER SUITS</p>
+              <p className="text-foreground-subtle">BESPOKE & SEMI-BESPOKE ATELIER</p>
+              <p className="text-foreground-subtle">PUTALISADAK, KATHMANDU</p>
             </div>
 
-            <div className="text-xs uppercase tracking-widest text-neutral-400 font-mono flex items-center gap-2">
+            <div className="text-xs uppercase tracking-widest text-foreground-subtle font-mono flex items-center gap-2">
               <span>KEEP SCROLLING</span>
               <span className="animate-bounce">↓</span>
             </div>
@@ -55,58 +38,61 @@ function HeroSection() {
         {/* ABOUT / VISION SECTION */}
         <section className="min-h-screen py-32 px-6 md:px-16 flex flex-col justify-center space-y-32">
           <div className="max-w-2xl space-y-4">
-            <span className="text-xs font-mono uppercase text-neutral-500 tracking-widest block">
-              ABOUT
+            <span className="text-xs font-mono uppercase text-primary tracking-widest block">
+              HERITAGE
             </span>
-            <p className="text-2xl md:text-4xl font-light leading-snug">
-              Monolith Studio, founded by pioneers of Fine Line & Micro Realism, hosts the world's best tattoo masters in Brooklyn, NYC.
+            <p className="text-2xl md:text-4xl font-light leading-snug text-foreground">
+              Crafting custom bespoke and semi-bespoke sartorial masterpieces with premium fabrics since 1989.
             </p>
           </div>
 
           <div className="max-w-2xl ml-auto space-y-4 text-right">
-            <span className="text-xs font-mono uppercase text-neutral-500 tracking-widest block">
-              OUR VISION
+            <span className="text-xs font-mono uppercase text-primary tracking-widest block">
+              OUR CRAFT
             </span>
-            <p className="text-2xl md:text-4xl font-light leading-snug">
-              Transforming your unique stories into stunning visual art on your skin.
+            <p className="text-2xl md:text-4xl font-light leading-snug text-foreground">
+              Transforming world-class fabrics into custom-tailored luxury garments designed uniquely for you.
             </p>
           </div>
         </section>
 
-        {/* MARQUEE */}
-        <section className="py-20 border-y border-white/10 overflow-hidden bg-black/40 backdrop-blur-sm">
-          <div className="marquee-text flex gap-8 text-7xl md:text-9xl font-display font-extrabold uppercase text-white/20 select-none whitespace-nowrap">
-            <span>MEET THE ARTISTS ✦ MONOLITH STUDIO BROOKLYN ✦ MEET THE ARTISTS ✦</span>
+        {/* MARQUEE SECTION - Set to z-40 */}
+        <section className="relative z-40 py-20 border-y border-border overflow-hidden bg-background/65 backdrop-blur-sm">
+          <div className="flex w-max animate-marquee">
+            <div className="flex shrink-0 gap-8 text-7xl md:text-9xl font-display font-extrabold uppercase text-foreground/20 select-none whitespace-nowrap pr-8">
+              <span>BESPOKE TAILORING ✦ CRAFTING SARTORIAL MASTERPIECES SINCE 1989 ✦</span>
+            </div>
+            <div className="flex shrink-0 gap-8 text-7xl md:text-9xl font-display font-extrabold uppercase text-foreground/20 select-none whitespace-nowrap pr-8" aria-hidden="true">
+              <span>BESPOKE TAILORING ✦ CRAFTING SARTORIAL MASTERPIECES SINCE 1989 ✦</span>
+            </div>
           </div>
         </section>
 
+        {/* COLLECTION HEADER - Set to z-40 */}
+        <section className="relative z-40 bg-background/85 px-6 md:px-12 pt-24 pb-6 border-b border-border backdrop-blur-xs">
+          <div className="flex justify-between items-end">
+            <div>
+              <h2 className="text-4xl md:text-6xl font-display font-bold text-foreground">Collections</h2>
+              <p className="text-xs text-foreground-subtle font-mono mt-2">CUSTOM TAILORED APPAREL & FABRICS</p>
+            </div>
+          </div>
+        </section>
       </div>
 
-      {/* SOLID CONTENT ZONE (Covers GLB canvas completely) */}
-      <section id="artists" className="relative z-20 py-24 px-6 md:px-12 bg-black">
-        <div className="flex justify-between items-end mb-16 border-b border-neutral-800 pb-6">
-          <div>
-            <h2 className="text-4xl md:text-6xl font-display font-bold">Artists</h2>
-            <p className="text-xs text-neutral-500 font-mono mt-2">RESIDENT & GUEST TATTOO MASTERS</p>
-          </div>
-        </div>
-
+      {/* COLLECTION GRID - Set to z-50 */}
+      <section id="collections" className="relative z-50 py-16 px-6 md:px-12 bg-background/85 backdrop-blur-md">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          <div className="aspect-[3/4] bg-neutral-900 border border-neutral-800 p-4 flex items-end">
-            <span className="font-bold">Okan Uckun</span>
-          </div>
-          <div className="aspect-[3/4] bg-neutral-900 border border-neutral-800 p-4 flex items-end">
-            <span className="font-bold">Oscar Akermo</span>
-          </div>
-          <div className="aspect-[3/4] bg-neutral-900 border border-neutral-800 p-4 flex items-end">
-            <span className="font-bold">Stevo</span>
-          </div>
-          <div className="aspect-[3/4] bg-neutral-900 border border-neutral-800 p-4 flex items-end">
-            <span className="font-bold">
-              lorem3000
-              Amalie Arsinevici</span>
-          </div>
+          {["Bespoke Suits", "Overcoats & Pea Coats", "Custom Shirts", "Luxury Fabrics"].map((category) => (
+            <div key={category} className="aspect-[3/4] border border-border p-4 flex items-end bg-surface">
+              <span className="font-bold text-foreground">{category}</span>
+            </div>
+          ))}
         </div>
+      </section>
+
+      {/* SUBSEQUENT SECTIONS */}
+      <section className="relative z-50 py-24 px-6 md:px-12 bg-background border-t border-border">
+        {/* Next section content */}
       </section>
     </div>
   );
