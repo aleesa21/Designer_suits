@@ -148,9 +148,9 @@ function HeroSection() {
       </section>
 
       {/* SUBSEQUENT SECTIONS */}
-      {/* <section className="relative z-50 py-24 px-6 md:px-12 bg-background border-t border-border"></section> */}
-
-      <ReviewsSection></ReviewsSection>
+      <section className="relative z-50 py-10 px-6 md:px-12 bg-background border-t border-border">
+        <ReviewsSection></ReviewsSection>
+      </section>
     </div>
   );
 }

@@ -57,7 +57,6 @@ const CATEGORIES = ["All Collections", "male", "female"];
 
 export default function Product() {
   const [activeCategory, setActiveCategory] = useState("All Collections");
-
   const navigate = useNavigate();
 
   const filteredProducts =
@@ -66,8 +65,18 @@ export default function Product() {
       : PRODUCTS.filter((p) => p.category === activeCategory);
 
   return (
-    <section className="min-h-screen bg-background text-foreground font-sans px-6 md:px-12 py-26 border-t border-border/30">
-      <div className="max-w-7xl mx-auto mb-10 text-center md:text-left flex flex-col md:flex-row md:items-end justify-between gap-6">
+    <section className="relative min-h-screen bg-background text-foreground font-sans px-6 md:px-12 py-26 border-t border-border/30 overflow-hidden">
+      {/* Subtle left glow */}
+      <div
+        className="pointer-events-none absolute -left-[15%] top-[-10%] w-[55%] h-[70%] rounded-full"
+        style={{
+          background:
+            "radial-gradient(ellipse at center, rgba(201,168,108,0.07) 0%, transparent 70%)",
+        }}
+      />
+
+      {/* Header */}
+      <div className="relative max-w-7xl mx-auto mb-10 text-center md:text-left flex flex-col md:flex-row md:items-end justify-between gap-6">
         <div>
           <span className="text-primary-light text-xs uppercase tracking-[0.4em] font-medium block mb-2">
             Signature Collections
@@ -83,21 +92,25 @@ export default function Product() {
         </p>
       </div>
 
-      <div className="max-w-7xl mx-auto mb-8 flex items-center justify-between border-b border-border/30 pb-4">
+      {/* Filters */}
+      <div className="relative max-w-7xl mx-auto mb-8 flex items-center justify-between border-b border-border/30 pb-4">
         <div className="flex flex-wrap gap-3">
-          {CATEGORIES.map((cat) => (
-            <button
-              key={cat}
-              onClick={() => setActiveCategory(cat)}
-              className={`text-[11px] uppercase tracking-[0.2em] px-5 py-2 rounded-full transition-all duration-300 ${
-                activeCategory === cat
-                  ? "bg-primary text-foreground-inverted font-medium shadow-md shadow-primary/20"
-                  : "text-foreground-subtle hover:text-foreground border border-border/40 hover:border-primary/50"
-              }`}
-            >
-              {cat}
-            </button>
-          ))}
+          {CATEGORIES.map((cat) => {
+            const isActive = activeCategory === cat;
+            return (
+              <button
+                key={cat}
+                onClick={() => setActiveCategory(cat)}
+                className={`text-[11px] uppercase tracking-[0.2em] px-5 py-2.5 rounded-full transition-all duration-300 border ${
+                  isActive
+                    ? "bg-primary/10 border-primary text-primary font-medium"
+                    : "bg-transparent border-border/40 text-foreground-subtle hover:text-foreground hover:border-primary/50"
+                }`}
+              >
+                {cat}
+              </button>
+            );
+          })}
         </div>
         <span className="text-xs text-foreground-subtle uppercase tracking-widest hidden sm:block">
           Showing {filteredProducts.length} Piece
@@ -105,39 +118,54 @@ export default function Product() {
         </span>
       </div>
 
-      <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      {/* Product Grid */}
+      <div className="relative max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
         {filteredProducts.map((product) => (
           <div
             key={product.id}
             onClick={() => navigate(`/product/${product.id}`)}
-            className="group relative flex flex-col bg-background/60 backdrop-blur-md border border-border/30 hover:border-primary/70 rounded-lg overflow-hidden transition-all duration-500 hover:-translate-y-1 shadow-lg shadow-black/60 cursor-pointer"
+            className="group relative flex flex-col rounded-xl overflow-hidden cursor-pointer
+                 border border-white/10
+                 bg-white/[0.03] backdrop-blur-md
+                 hover:border-primary/40 hover:bg-white/[0.05]
+                 transition-all duration-500"
           >
-            <div className="relative aspect-square w-full overflow-hidden bg-surface">
+            {/* Image */}
+            <div className="relative aspect-square w-full overflow-hidden">
               <img
                 src={product.image}
                 alt={product.name}
-                className="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105 opacity-85 group-hover:opacity-100"
+                className="w-full h-full object-cover object-center 
+                     transition-transform duration-700 group-hover:scale-105
+                     opacity-90 group-hover:opacity-100"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-70 group-hover:opacity-40 transition-opacity" />
 
-              <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/30 backdrop-blur-[2px]">
-                <span className="text-[10px] uppercase tracking-[0.25em] text-foreground bg-surface/90 border border-primary/60 px-4 py-2 rounded-full">
+              {/* Hover overlay */}
+              <div
+                className="absolute inset-0 flex items-center justify-center 
+                        opacity-0 group-hover:opacity-100 transition-opacity duration-300 
+                        bg-black/25 backdrop-blur-[2px]"
+              >
+                <span
+                  className="text-[11px] uppercase tracking-[0.25em] text-foreground 
+                           border border-primary/60 bg-black/30 px-6 py-3 rounded-sm"
+                >
                   View Detail
                 </span>
               </div>
             </div>
 
-            <div className="p-4 flex flex-col justify-between bg-black/40 backdrop-blur-sm">
-              <div>
-                <div className="flex justify-between items-center mb-1">
-                  <span className="text-[9px] uppercase tracking-[0.25em] text-primary-light">
-                    {product.category}
-                  </span>
-                </div>
-                <h3 className="font-serif text-base text-foreground group-hover:text-primary transition-colors line-clamp-1">
-                  {product.name}
-                </h3>
-              </div>
+            {/* Info section BELOW the image – transparent glass */}
+            <div className="p-4 bg-black/25 backdrop-blur-md border-t border-white/5">
+              <span className="text-[9px] uppercase tracking-[0.25em] text-primary-light block mb-1">
+                {product.category}
+              </span>
+              <h3
+                className="font-serif text-[15px] text-foreground 
+                       group-hover:text-primary transition-colors line-clamp-1"
+              >
+                {product.name}
+              </h3>
             </div>
           </div>
         ))}
