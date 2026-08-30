@@ -1,6 +1,6 @@
 import React from "react";
 import ModelCanvas from "./ModelCanvas";
-
+import ReviewsSection from "./ReviewsSection";
 const PRODUCTS = [
   {
     id: 1,
@@ -72,38 +72,38 @@ function HeroSection() {
         </section>
 
         {/* ABOUT / VISION SECTION */}
-        <section className="min-h-screen py-32 px-6 md:px-16 flex flex-col justify-center space-y-16 md:space-y-24">
+        <section className="min-h-screen py-32 px-6 2xl:px-16 flex flex-col justify-center space-y-16 2xl:space-y-24">
           {/* HERITAGE BOX */}
-          <div className="max-w-xl glass-badge space-y-4 p-8 md:p-12 pointer-events-auto rounded-sm">
+          <div className="max-w-md 2xl:max-w-xl glass-badge space-y-4 p-8 2xl:p-12 pointer-events-auto rounded-sm">
             <span className="text-xs font-mono uppercase text-primary tracking-widest block">
               HERITAGE
             </span>
-            <p className="text-2xl md:text-4xl font-light leading-snug text-foreground text-left">
+            <p className="text-2xl 2xl:text-4xl font-light leading-snug text-foreground text-left">
               Crafting custom bespoke and semi-bespoke sartorial masterpieces
               with premium fabrics since 1989.
             </p>
           </div>
 
           {/* OUR CRAFT BOX */}
-          <div className="max-w-xl glass-badge ml-auto space-y-4 p-8 md:p-12 pointer-events-auto rounded-sm">
+          <div className="max-w-md 2xl:max-w-xl glass-badge ml-auto space-y-4 p-8 2xl:p-12 pointer-events-auto rounded-sm">
             <span className="text-xs font-mono uppercase text-primary tracking-widest block text-right">
               OUR CRAFT
             </span>
-            <p className="text-2xl md:text-4xl font-light leading-snug text-foreground text-right">
+            <p className="text-2xl 2xl:text-4xl font-light leading-snug text-foreground text-right">
               Transforming world-class fabrics into custom-tailored luxury
               garments designed uniquely for you.
             </p>
           </div>
         </section>
 
-        {/* MARQUEE SECTION - Set to z-40 */}
-        <section className="relative z-40 py-10 border-y border-border overflow-hidden bg-background/65 backdrop-blur-sm">
+        {/* MARQUEE SECTION  */}
+        <section className="relative z-40 py-2 2xl:py-8 border-y border-border overflow-hidden bg-background/65 backdrop-blur-sm">
           <div className="flex w-max animate-marquee">
-            <div className="flex shrink-0 gap-8 text-7xl md:text-9xl font-display font-extrabold uppercase text-foreground/20 select-none whitespace-nowrap pr-8">
+            <div className="flex shrink-0 gap-8 text-4xl md:text-6xl font-display font-extrabold uppercase text-foreground/20 select-none whitespace-nowrap pr-8">
               <span>DESIGNER SUITS ✦ CRAFTING CUSTOM SUITS SINCE 1989 ✦</span>
             </div>
             <div
-              className="flex shrink-0 gap-8 text-7xl md:text-9xl font-display font-extrabold uppercase text-foreground/20 select-none whitespace-nowrap pr-8"
+              className="flex shrink-0 gap-8 text-4xl md:text-6xl font-display font-extrabold uppercase text-foreground/20 select-none whitespace-nowrap pr-8"
               aria-hidden="true"
             >
               <span>DESIGNER SUITS ✦ CRAFTING CUSTOM SUITS SINCE 1989 ✦</span>
@@ -148,9 +148,9 @@ function HeroSection() {
       </section>
 
       {/* SUBSEQUENT SECTIONS */}
-      <section className="relative z-50 py-24 px-6 md:px-12 bg-background border-t border-border">
-        {/* Next section content */}
-      </section>
+      {/* <section className="relative z-50 py-24 px-6 md:px-12 bg-background border-t border-border"></section> */}
+
+      <ReviewsSection></ReviewsSection>
     </div>
   );
 }

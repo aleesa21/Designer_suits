@@ -16,7 +16,7 @@ const Faq = lazy(() => import("./component/Faq"));
 const Popup = lazy(() => import("./component/Popup"));
 const Shopdetails = lazy(() => import("./component/Shopdetails"));
 const Pastworks = lazy(() => import("./pages/Pastworks"));
-
+const Socials=lazy(()=>import("./pages/Socials"));
 // Helper function to stop repeating <Suspense>
 const withSuspense = (Component) => (
   <Suspense fallback={<div>Loading...</div>}>
@@ -34,6 +34,7 @@ const router = createBrowserRouter([
       { path: "/product/:id", element: withSuspense(ProductDetailPage) },
       { path: "/about", element: withSuspense(About) },
       { path: "/contact", element: withSuspense(Contact) },
+      {path:"/socials",element:withSuspense(Socials)},
     ],
   },
   {
