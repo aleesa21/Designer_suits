@@ -96,6 +96,7 @@ function Model({ url, activeFeatureIndex }) {
           start: "top top",
           end: "bottom bottom",
           scrub: 0.5,
+          invalidateOnRefresh: false,
         },
       });
 
@@ -146,6 +147,7 @@ function Model({ url, activeFeatureIndex }) {
             start: "top top",
             end: "bottom bottom",
             scrub: 0.5,
+            invalidateOnRefresh: false,
           },
         })
         .to(
@@ -203,8 +205,12 @@ function Model({ url, activeFeatureIndex }) {
 }
 
 export default function ModelCanvas({ url, activeFeatureIndex }) {
+  useEffect(() => {
+    ScrollTrigger.config({ ignoreMobileResize: true });
+  }, []);
+
   return (
-    <div className="glb-canvas-container fixed inset-0 z-[1] pointer-events-none transition-opacity duration-300">
+    <div className="glb-canvas-container fixed inset-0 h-[100svh] w-screen z-[1] pointer-events-none transition-opacity duration-300">
       <Canvas
         camera={{
           fov: 45,
@@ -218,7 +224,7 @@ export default function ModelCanvas({ url, activeFeatureIndex }) {
           toneMapping: THREE.ACESFilmicToneMapping,
           toneMappingExposure: 1.0,
         }}
-        dpr={[1, 1.5]}
+        dpr={[1, 2]} 
       >
         <fogExp2 attach="fog" args={["#0c0c0c", 0.035]} />
 

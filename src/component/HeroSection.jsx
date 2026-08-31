@@ -103,12 +103,14 @@ function HeroSection() {
 
       <div id="model-hero-zone" className="relative w-full">
         {/* HERO LANDING SECTION */}
-        <section className="min-h-screen relative flex flex-col justify-between pt-24 pointer-events-none">
-          <div className="absolute left-0 right-0 flex items-center justify-center pointer-events-none">
+        <section className="min-h-screen relative flex flex-col justify-between pt-15 pointer-events-none">
+           <div className="absolute left-0 right-0 flex items-center justify-center pointer-events-none">
             <h1 className="hero-title text-foreground select-none opacity-90 text-center">
               Designer suits
             </h1>
           </div>
+
+
 
           <div className="w-full" />
 
