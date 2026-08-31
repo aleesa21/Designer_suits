@@ -92,49 +92,49 @@ function Model({ url, activeFeatureIndex }) {
     mm.add("(max-width: 767px)", () => {
       const tl = gsap.timeline({
         scrollTrigger: {
-          trigger: "#model-hero-zone",
-          start: "top top",
-          end: "bottom bottom",
-          scrub: 0.5,
+          trigger: ".mobile-features-container",
+          start: "top 80%",
+          end: "bottom 30%",
+          scrub: 0.3,
           invalidateOnRefresh: false,
         },
       });
 
       tl.to(idleGroupRef.current.rotation, { y: 0, ease: "power1.inOut" }, 0)
-        // Feature 1: Silk Lapel
+        // Feature 1: Lapel Focus
         .to(
           scrollGroupRef.current.position,
-          { x: 0.08, y: -0.05, z: 0.2, ease: "power1.inOut" },
+          { x: 0.12, y: -0.02, z: 0.35, ease: "power1.inOut" },
           0,
         )
         .to(
           scrollGroupRef.current.rotation,
-          { y: Math.PI * 0.04, x: 0.01, ease: "power1.inOut" },
+          { y: Math.PI * 0.08, x: 0.02, ease: "power1.inOut" },
           0,
         )
 
-        // Feature 2: Waist Cut
+        // Feature 2: Waist Cut Focus
         .to(
           scrollGroupRef.current.position,
-          { x: 0.08, y: -0.1, z: 0.18, ease: "power1.inOut" },
-          0.33,
+          { x: 0.1, y: -0.15, z: 0.28, ease: "power1.inOut" },
+          0.5,
         )
         .to(
           scrollGroupRef.current.rotation,
-          { y: Math.PI * 0.3, x: 0.02, ease: "power1.inOut" },
-          0.33,
+          { y: Math.PI * 0.45, x: 0.03, ease: "power1.inOut" },
+          0.5,
         )
 
-        // Feature 3: Back Tailoring
+        // Feature 3: Back Tailoring Focus
         .to(
           scrollGroupRef.current.position,
-          { x: 0.08, y: -0.12, z: 0.15, ease: "power1.inOut" },
-          0.66,
+          { x: 0.08, y: -0.18, z: 0.22, ease: "power1.inOut" },
+          1.0,
         )
         .to(
           scrollGroupRef.current.rotation,
-          { y: Math.PI * 0.85, x: 0.04, ease: "power1.inOut" },
-          0.66,
+          { y: Math.PI * 0.95, x: 0.05, ease: "power1.inOut" },
+          1.0,
         );
     });
 
@@ -224,7 +224,7 @@ export default function ModelCanvas({ url, activeFeatureIndex }) {
           toneMapping: THREE.ACESFilmicToneMapping,
           toneMappingExposure: 1.0,
         }}
-        dpr={[1, 2]} 
+        dpr={[1, 2]}
       >
         <fogExp2 attach="fog" args={["#0c0c0c", 0.035]} />
 

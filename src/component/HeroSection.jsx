@@ -12,33 +12,28 @@ const PRODUCTS = [
     id: 1,
     name: "The Midnight Tuxedo",
     category: "male",
-    image:
-      "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?auto=format&fit=crop&q=80&w=800",
-    details:
-      "Bespoke 3-piece tuxedo with silk peak lapel and hand-stitched lining.",
+    image: "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?auto=format&fit=crop&q=80&w=800",
+    details: "Bespoke 3-piece tuxedo with silk peak lapel and hand-stitched lining.",
   },
   {
     id: 2,
     name: "Charcoal Double-Breasted",
     category: "female",
-    image:
-      "https://images.unsplash.com/photo-1593030761757-71fae45fa0e7?auto=format&fit=crop&q=80&w=800",
+    image: "https://images.unsplash.com/photo-1593030761757-71fae45fa0e7?auto=format&fit=crop&q=80&w=800",
     details: "Architectural structured silhouette utilizing English flannel.",
   },
   {
     id: 3,
     name: "Sandstone Linen Suit",
     category: "male",
-    image:
-      "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&q=80&w=800",
+    image: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&q=80&w=800",
     details: "Unstructured summer jacket in 100% Irish heavyweight linen.",
   },
   {
     id: 4,
     name: "Royal Navy Pinstripe",
     category: "female",
-    image:
-      "https://images.unsplash.com/photo-1598808503746-f34c53b9323e?auto=format&fit=crop&q=80&w=800",
+    image: "https://images.unsplash.com/photo-1598808503746-f34c53b9323e?auto=format&fit=crop&q=80&w=800",
     details: "Classic power suit tailored with high-twist Worsted wool.",
   },
 ];
@@ -49,9 +44,8 @@ function HeroSection() {
   useGSAP(() => {
     const mm = gsap.matchMedia();
 
-    // MOBILE-ONLY GSAP LOGIC
     mm.add("(max-width: 767px)", () => {
-      // Fade out hero UI smoothly right when scrolling starts
+      // Fade hero bottom UI early
       gsap.to("#hero-bottom-ui", {
         opacity: 0,
         y: -10,
@@ -59,35 +53,35 @@ function HeroSection() {
         scrollTrigger: {
           trigger: "#model-hero-zone",
           start: "top top",
-          end: "top -20%",
+          end: "top -10%",
           scrub: true,
         },
       });
 
-      // Feature 1 Trigger
+      // Feature 1
       ScrollTrigger.create({
         trigger: "#mobile-feat-1",
-        start: "top 70%",
-        end: "bottom 30%",
+        start: "top 60%",
+        end: "bottom 40%",
         onEnter: () => setActiveFeatureIndex(0),
         onEnterBack: () => setActiveFeatureIndex(0),
         onLeaveBack: () => setActiveFeatureIndex(-1),
       });
 
-      // Feature 2 Trigger
+      // Feature 2 (Explicit callbacks fix reverse scroll skipping)
       ScrollTrigger.create({
         trigger: "#mobile-feat-2",
-        start: "top 70%",
-        end: "bottom 30%",
+        start: "top 60%",
+        end: "bottom 40%",
         onEnter: () => setActiveFeatureIndex(1),
         onEnterBack: () => setActiveFeatureIndex(1),
       });
 
-      // Feature 3 Trigger
+      // Feature 3
       ScrollTrigger.create({
         trigger: "#mobile-feat-3",
-        start: "top 70%",
-        end: "bottom 30%",
+        start: "top 60%",
+        end: "bottom 40%",
         onEnter: () => setActiveFeatureIndex(2),
         onEnterBack: () => setActiveFeatureIndex(2),
         onLeave: () => setActiveFeatureIndex(-1),
@@ -103,14 +97,12 @@ function HeroSection() {
 
       <div id="model-hero-zone" className="relative w-full">
         {/* HERO LANDING SECTION */}
-        <section className="min-h-screen relative flex flex-col justify-between pt-15 pointer-events-none">
-           <div className="absolute left-0 right-0 flex items-center justify-center pointer-events-none">
+        <section className="h-[100svh] relative flex flex-col justify-between pt-24 pointer-events-none">
+          <div className="absolute left-0 right-0 flex items-center justify-center pointer-events-none">
             <h1 className="hero-title text-foreground select-none opacity-90 text-center">
               Designer suits
             </h1>
           </div>
-
-
 
           <div className="w-full" />
 
@@ -127,7 +119,7 @@ function HeroSection() {
             </div>
 
             <div className="text-[10px] sm:text-xs uppercase tracking-widest text-foreground-subtle font-mono flex items-center gap-1 sm:gap-2 shrink-0">
-              <span>KEEP SCROLLING</span>
+              <span>EXPLORE CRAFT</span>
               <span className="animate-bounce">↓</span>
             </div>
           </div>
@@ -156,11 +148,11 @@ function HeroSection() {
           </div>
         </section>
 
-        {/* MOBILE-ONLY FAST SCROLL ZONES */}
-        <div className="block md:hidden mobile-features-container relative z-20">
-          <div id="mobile-feat-1" className="h-[60vh] w-full" />
-          <div id="mobile-feat-2" className="h-[60vh] w-full" />
-          <div id="mobile-feat-3" className="h-[60vh] w-full" />
+        {/* COMPACT MOBILE FEATURE ZONES */}
+        <div className="block md:hidden mobile-features-container relative z-20 my-12">
+          <div id="mobile-feat-1" className="h-[35vh] w-full" />
+          <div id="mobile-feat-2" className="h-[35vh] w-full" />
+          <div id="mobile-feat-3" className="h-[35vh] w-full" />
         </div>
 
         {/* MARQUEE SECTION */}
