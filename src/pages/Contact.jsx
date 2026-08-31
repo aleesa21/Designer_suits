@@ -86,10 +86,14 @@ export default function Contact() {
             <div className="space-y-8 flex-1">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div className="space-y-2">
-                  <label className="text-xs uppercase tracking-widest text-neutral-200 font-medium block">
+                  <label
+                    htmlFor="contact-first-name"
+                    className="text-xs uppercase tracking-widest text-neutral-200 font-medium block"
+                  >
                     First Name <span className="text-[#AE8A3E]">*</span>
                   </label>
                   <input
+                    id="contact-first-name"
                     type="text"
                     name="firstName"
                     required
@@ -101,10 +105,14 @@ export default function Contact() {
                 </div>
 
                 <div className="space-y-2">
-                  <label className="text-xs uppercase tracking-widest text-neutral-200 font-medium block">
+                  <label
+                    htmlFor="contact-last-name"
+                    className="text-xs uppercase tracking-widest text-neutral-200 font-medium block"
+                  >
                     Last Name <span className="text-[#AE8A3E]">*</span>
                   </label>
                   <input
+                    id="contact-last-name"
                     type="text"
                     name="lastName"
                     required
@@ -118,10 +126,14 @@ export default function Contact() {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div className="space-y-2">
-                  <label className="text-xs uppercase tracking-widest text-neutral-200 font-medium block">
+                  <label
+                    htmlFor="contact-email"
+                    className="text-xs uppercase tracking-widest text-neutral-200 font-medium block"
+                  >
                     Email Address <span className="text-[#AE8A3E]">*</span>
                   </label>
                   <input
+                    id="contact-email"
                     type="email"
                     name="email"
                     required
@@ -133,10 +145,14 @@ export default function Contact() {
                 </div>
 
                 <div className="space-y-2">
-                  <label className="text-xs uppercase tracking-widest text-neutral-200 font-medium block">
+                  <label
+                    htmlFor="contact-company-name"
+                    className="text-xs uppercase tracking-widest text-neutral-200 font-medium block"
+                  >
                     Company Name <span className="text-[#AE8A3E]">*</span>
                   </label>
                   <input
+                    id="contact-company-name"
                     type="text"
                     name="companyName"
                     required
@@ -149,11 +165,15 @@ export default function Contact() {
               </div>
 
               <div className="space-y-2">
-                <label className="text-xs uppercase tracking-widest text-neutral-200 font-medium block">
+                <label
+                  htmlFor="contact-service"
+                  className="text-xs uppercase tracking-widest text-neutral-200 font-medium block"
+                >
                   Service Interested In
                 </label>
                 <div className="relative">
                   <select
+                    id="contact-service"
                     name="serviceInterestedIn"
                     value={formData.serviceInterestedIn}
                     onChange={handleChange}
@@ -189,10 +209,14 @@ export default function Contact() {
               </div>
 
               <div className="space-y-2 flex-1 flex flex-col">
-                <label className="text-xs uppercase tracking-widest text-neutral-200 font-medium block">
+                <label
+                  htmlFor="contact-message"
+                  className="text-xs uppercase tracking-widest text-neutral-200 font-medium block"
+                >
                   Message <span className="text-[#AE8A3E]">*</span>
                 </label>
                 <textarea
+                  id="contact-message"
                   name="message"
                   required
                   value={formData.message}

@@ -152,10 +152,14 @@ function ProductsForm({ categories, closeForm, editedData }) {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="space-y-6">
               <div>
-                <label className="block text-[10px] uppercase tracking-[0.2em] font-medium text-white mb-2">
+                <label
+                  htmlFor="product-title"
+                  className="block text-[10px] uppercase tracking-[0.2em] font-medium text-white mb-2"
+                >
                   Design Title *
                 </label>
                 <input
+                  id="product-title"
                   type="text"
                   name="title"
                   value={formData.title}
@@ -167,10 +171,14 @@ function ProductsForm({ categories, closeForm, editedData }) {
               </div>
 
               <div>
-                <label className="block text-[10px] uppercase tracking-[0.2em] font-medium text-white mb-2">
+                <label
+                  htmlFor="product-category"
+                  className="block text-[10px] uppercase tracking-[0.2em] font-medium text-white mb-2"
+                >
                   Collection Category *
                 </label>
                 <select
+                  id="product-category"
                   value={formData.category_id}
                   name="category_id"
                   onChange={handleOnchange}
@@ -189,10 +197,14 @@ function ProductsForm({ categories, closeForm, editedData }) {
               </div>
 
               <div>
-                <label className="block text-[10px] uppercase tracking-[0.2em] font-medium text-white mb-2">
+                <label
+                  htmlFor="product-description"
+                  className="block text-[10px] uppercase tracking-[0.2em] font-medium text-white mb-2"
+                >
                   Description & Craftsmanship
                 </label>
                 <textarea
+                  id="product-description"
                   rows={4}
                   name="description"
                   value={formData.description}
@@ -205,10 +217,14 @@ function ProductsForm({ categories, closeForm, editedData }) {
 
             <div className="space-y-6">
               <div>
-                <label className="block text-[10px] uppercase tracking-[0.2em] font-medium text-white mb-2">
+                <label
+                  htmlFor="product-fabrics"
+                  className="block text-[10px] uppercase tracking-[0.2em] font-medium text-white mb-2"
+                >
                   Fabrics
                 </label>
                 <input
+                  id="product-fabrics"
                   type="text"
                   name="fabric_options"
                   value={formData.fabric_options}
@@ -222,10 +238,14 @@ function ProductsForm({ categories, closeForm, editedData }) {
               </div>
 
               <div>
-                <label className="block text-[10px] uppercase tracking-[0.2em] font-medium text-white mb-2">
+                <label
+                  htmlFor="product-display-order"
+                  className="block text-[10px] uppercase tracking-[0.2em] font-medium text-white mb-2"
+                >
                   Display Rank
                 </label>
                 <input
+                  id="product-display-order"
                   type="number"
                   min="0"
                   name="display_order"
